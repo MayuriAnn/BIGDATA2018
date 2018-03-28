@@ -34,19 +34,69 @@ ehPrimo n = prime' n 2 0
 
 
 sumDigits n = sum [digitToInt d | d <- show n] 
-       
+
+persAditiva n = pers' n 0
+    where
+        pers' n r
+            |(length $ show n) == 1 = r
+            |otherwise = pers' (sumDigits n) (r+1)
+
+fatorial :: Integer -> Integer
+fatorial 0 = 1
+fatorial 1 = 1
+fatorial n = fatorial' n 1
+  where
+    fatorial' 1 r = r
+    fatorial' n r = fatorial' (n-1) (n*r)
+
+coefBinomial :: Integer -> Integer -> Integer 
+coefBinomial m n = fatorial m `div` (fatorial n * fatorial(m-n))
+
+coefBinRecursive :: Integer -> Integer -> Integer    
+coefBinRecursive m n
+    |n==0 = 1
+    |m==n = 1
+    |otherwise =  (coefBinRecursive (m-1) (n-1)) + (coefBinRecursive (m-1) (n))
+
+pascalTriangleIJ :: Integer -> Integer -> Integer 
+pascalTriangleIJ i j = coefBinRecursive i j
+
 -- |'main' executa programa principal
 main :: IO ()
 main = do
+    print ("ehTriangulo 1 2 3")
     print (ehTriangulo 1 2 3)
+    print ("ehTriangulo 5 5 5")
     print (ehTriangulo 5 5 5)
+    print ("tipoTriangulo 5 5 5")
     print (tipoTriangulo 5 5 5)
+    print ("tipoTriangulo 5 5 9")
     print (tipoTriangulo 5 5 9)
+    print ("tipoTriangulo 6 4 9")
     print (tipoTriangulo 6 4 9)
+    print ("tipoTriangulo 1 2 3")
     print (tipoTriangulo 1 2 3)
+    print ("multEtiope 12 12")
     print (multEtiope 12 12)
+    print ("multEtiopeCaudal 12 12")
     print (multEtiopeCaudal 12 12)
     print ("ehPrimo 7919")
     print (ehPrimo 7919)
     print ("sumDigits 123456789")
     print (sumDigits 123456789)
+    print ("persAditiva 123456789")
+    print (persAditiva 123456789)
+    print ("coefBinomial 10 5")
+    print (coefBinomial 10 5)   
+    print ("coefBinRecursive 10 5")
+    print (coefBinRecursive 10 5) 
+    print ("pascalTriangleIJ 7 3") 
+    print (pascalTriangleIJ 7 3)
+
+
+
+
+
+
+
+
