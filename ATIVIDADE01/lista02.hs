@@ -1,3 +1,4 @@
+import Data.Char
 ehTriangulo a b c =  a+b>c && a+c>b && b+c>a
 
 tipoTriangulo a b c 
@@ -30,7 +31,10 @@ ehPrimo n = prime' n 2 0
             |n/=i && d/=0 = False
             |n `mod` i /=0 = prime' n (i+1) (d)
             |otherwise = prime' n (i+1) (d+1)
-        
+
+
+sumDigits n = sum [digitToInt d | d <- show n] 
+       
 -- |'main' executa programa principal
 main :: IO ()
 main = do
@@ -44,3 +48,5 @@ main = do
     print (multEtiopeCaudal 12 12)
     print ("ehPrimo 7919")
     print (ehPrimo 7919)
+    print ("sumDigits 123456789")
+    print (sumDigits 123456789)
