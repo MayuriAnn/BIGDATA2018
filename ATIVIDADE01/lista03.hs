@@ -11,11 +11,6 @@ divisivel20 x = div20' x 1
 --            |divisivel20 x = x
 --            |otherwise = proEu' (x+1)
 
---mdc a b 
---    |b<=0 = a
---    |otherwise = gcd b (a `mod` b)
-
-
 
 projectEuler5 = lcm' 12 (lcm 11 12)
     where
