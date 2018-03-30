@@ -1,13 +1,15 @@
 import Data.Char
+---exercicio 01
 ehTriangulo a b c =  a+b>c && a+c>b && b+c>a
 
+---exercicio 02
 tipoTriangulo a b c 
     |a==b && b==c = "equilatero"
     |a==b || b==c || a==c && ehTriangulo a b c = "isosceles"
     |a/=b && b/=c && a/=c && ehTriangulo a b c = "escaleno"
     |otherwise = "nao eh triangulo"
 
-
+---exercicio 03
 multEtiope m n 
     |m == 1 = n 
     |m `mod` 2/= 0 = n + multEtiope (m `div` 2) (n * 2)
@@ -20,7 +22,7 @@ multEtiopeCaudal m n = multEtiope' m n 0
             | m `mod` 2 /= 0 = multEtiope' (m `div` 2) (n * 2) (r+n)
             | otherwise = multEtiope' (m `div` 2) (n * 2) (r)
 
-            
+---exercicio 04            
 ehPrimo n = prime' n 2 0
     where
         prime' 1 _ _ = False
@@ -32,15 +34,17 @@ ehPrimo n = prime' n 2 0
             |n `mod` i /=0 = prime' n (i+1) (d)
             |otherwise = prime' n (i+1) (d+1)
 
-
+---exercicio 05
 sumDigits n = sum [digitToInt d | d <- show n] 
 
+---exercicio 06
 persAditiva n = pers' n 0
     where
         pers' n r
             |(length $ show n) == 1 = r
             |otherwise = pers' (sumDigits n) (r+1)
 
+---exercicio 07a
 fatorial :: Integer -> Integer
 fatorial 0 = 1
 fatorial 1 = 1
@@ -52,12 +56,14 @@ fatorial n = fatorial' n 1
 coefBinomial :: Integer -> Integer -> Integer 
 coefBinomial m n = fatorial m `div` (fatorial n * fatorial(m-n))
 
+---exercicio 07b
 coefBinRecursive :: Integer -> Integer -> Integer    
 coefBinRecursive m n
     |n==0 = 1
     |m==n = 1
     |otherwise =  (coefBinRecursive (m-1) (n-1)) + (coefBinRecursive (m-1) (n))
 
+---exercicio 08  
 pascalTriangleIJ :: Integer -> Integer -> Integer 
 pascalTriangleIJ i j = coefBinRecursive i j
 
