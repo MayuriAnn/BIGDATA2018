@@ -12,7 +12,7 @@ mult3 x = (x `rem` 3)==0
 mult5 x = (x `rem` 5)==0
 
 ---exercicio 04
-mult35 x = (x `rem` 3)==0 && (x `rem` 5)==0
+mult35 x = (mult3 x) && (mult5 x)
 
 ---exercicio 05
 checkCond x = (x<(-1)) || (x>1 && x `rem` 2==0)
@@ -42,8 +42,8 @@ lhalf = drop (length anosBiss `div` 2) anosBiss
 t = (fhalf, lhalf) 
 
 --exercicio 11
-concat :: [Char] -> [Char] -> [Char]
-concat s1 s2 = s1 ++ (' ' : s2)
+myConcat :: [Char] -> [Char] -> [Char]
+myConcat s1 s2 = s1 ++ (' ' : s2)
 
 --exercicio 12
 
@@ -55,5 +55,41 @@ digitos = [digitToInt d | d <- s, isDigit d] --permite apenas numeros
 -- |'main' executa programa principal
 main :: IO ()
 main = do
-    print (x)
-    print (y)
+    print ("exercicio 1: nao eh necessario parenteses")
+    print ("mult3 6")
+    print (mult3 6)
+    print ("mult3 7")
+    print (mult3 7)
+    print ("mult5 20")
+    print (mult5 20)
+    print ("mult5 22")
+    print (mult5 22)
+    print ("mult35 15")
+    print (mult35 15)
+    print ("mult35 12")
+    print (mult35 12)
+    print ("checkCond (-2)")
+    print (checkCond (-2))
+    print ("checkCond 6")
+    print (checkCond 6)
+    print ("checkCond 5")
+    print (checkCond 5)    
+    print ("checkCond 0")
+    print (checkCond 0)
+    print ("div2d 6")
+    print (div2d 6)
+    print ("sin2d 30")
+    print (sin2d 30)
+    print ("ano bissexto ate atual")
+    print (anosBiss) 
+    print ("10 primeiros ano bissexto")
+    print (f10) 
+    print ("10 ultimos ano bissexto")
+    print (l10) 
+    print ("exercicio 10")
+    print (t) 
+    print ("concat 'foo' 'bar'")
+    print (myConcat "foo" "bar")   
+    print ("exercicio 12")
+    print (digitos)
+    
